@@ -11,9 +11,8 @@ int main(int ac, char **av)
 {
 	if (ac < 2)
 		return (std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n", 1);
-	for (int i = 1; av[i]; i++) {
+	for (int i = 1; av[i]; i++)
 		str_toupper(av[i]);
-		std::cout << av[i] << ' ';
-	}
-	std::cout << '\n';
+	std::cout << std::endl;
+	return (0);
 }

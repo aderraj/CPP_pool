@@ -1,12 +1,40 @@
 #include "phonebook.hpp"
 #include <iostream>
 
+bool	is_number(std::string& str) {
+
+	for (char c : str)
+		if (!std::isdigit(c))
+			return false;
+
+	return true;
+}
+
+void	flush_input(std::string& input) {
+
+		std::cin.clear();
+		clearerr(stdin);
+		std::cin.rdbuf()->pubseekpos(0);
+		input.clear();
+
+		std::cout << std::endl;
+}
+
+bool	str_isprint(std::string& str) {
+
+	for (char c : str)
+		if (!isprint(c))
+				return (false);
+
+	return (true);
+}
+
 int main() {
   Phonebook phonebook;
   std::string command;
-
+  
   while (1) {
-    std::cout << "-> Enter a command: ";
+    std::cout << CYAN "--> " RESET << "Enter a command: ";
     std::getline(std::cin, command, '\n');
     if (std::cin.eof())
       break;

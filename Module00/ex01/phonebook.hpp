@@ -24,4 +24,7 @@ class Phonebook {
 				void searchContact();
 };
 
+bool	is_number(std::string& str);
+void	flush_input(std::string& input);
+bool	str_isprint(std::string& str);
 #endif

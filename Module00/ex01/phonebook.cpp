@@ -70,9 +70,9 @@ void	Phonebook::addContact() {
 void	display_field(std::string str) {
 
 	if (str.length() > 9)
-		std::cout << std::setw(10) << std::right << str.substr(0, 9) +  ".";
+		std::cout << std::setw(10) << str.substr(0, 9) +  ".";
 	else
-		std::cout << std::setw(10) << std::right << str;
+		std::cout << std::setw(10) << str;
 	std::cout << BLUE "|" RESET;
 
 }
@@ -88,7 +88,7 @@ void	displayContactList(Contact (&contacts)[8], int contacts_count) {
 
 	for (int i = 0; i < contacts_count; i++) {
 		std::cout << BLUE "|" RESET;
-		std::cout << std::setw(10) << std::right << i << BLUE "|" RESET;
+		std::cout << std::setw(10) << i << BLUE "|" RESET;
 		display_field(contacts[i].get_first_name());
 		display_field(contacts[i].get_last_name());
 		display_field(contacts[i].get_nickname());

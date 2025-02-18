@@ -18,12 +18,12 @@ OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(CC) $(OBJS) $(CFLAGS) -o $@
+	@$(CC) $(OBJS) $(CPPFLAGS) -o $@
 	@printf "$(ERASE)$(GREEN)--> $@ made <--$(END)\n"
 
 $(OBJS_DIR)/%.o: %.cpp Makefile
 	@mkdir -p $(OBJS_DIR)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) -c $< -o $@
 	@printf "$(BLUE) > Compilation :$(END) $<\r"
 	@sleep 0.2
 

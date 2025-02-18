@@ -1,6 +1,7 @@
 #include "phonebook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
 
 Phonebook::Phonebook() { contact_count = 0; };
 
@@ -110,7 +111,7 @@ void	Phonebook::searchContact(){
 
 	input = prompt_user(GREEN "Enter index of contact: " RESET);
 	if (!input.empty() && is_number(input)) {
-		index = std::stoi(input);
+		index = std::atoi(input.c_str());
 		if (index < 0 || index >= contact_count) {
 				std::cout << RED "Invalid index" RESET << std::endl;
 				return;

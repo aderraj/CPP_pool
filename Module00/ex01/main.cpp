@@ -1,10 +1,10 @@
 #include "phonebook.hpp"
 #include <iostream>
-
+#include <cstdio>
 bool	is_number(std::string& str) {
 
-	for (char c : str)
-		if (!std::isdigit(c))
+	for (int i = 0; str[i]; i++)
+		if (!std::isdigit(str[i]))
 			return false;
 
 	return true;
@@ -22,8 +22,8 @@ void	flush_input(std::string& input) {
 
 bool	str_isprint(std::string& str) {
 
-	for (char c : str)
-		if (!isprint(c))
+	for (int i = 0; str[i]; i++)
+		if (!isprint(str[i]))
 				return (false);
 
 	return (true);

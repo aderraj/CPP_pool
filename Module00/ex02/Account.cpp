@@ -1,6 +1,7 @@
 #include "Account.hpp"
 #include <iostream>
 #include <iomanip>
+#include <ctime>
 
 Account::Account(int initial_deposit)
   : _accountIndex(_nbAccounts), _amount(initial_deposit), _nbDeposits(0), _nbWithdrawals(0)

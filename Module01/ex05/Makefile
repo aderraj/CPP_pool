@@ -7,7 +7,7 @@ BOLD		:=	\033[1m
 END			:=	\033[0m
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Harl_2.0
 SRCS = Harl.cpp main.cpp
 OBJS_DIR = objs

@@ -10,7 +10,6 @@ Contact::Contact(std::string first_name, std::string last_name,
     : first_name(first_name), last_name(last_name), nickname(nickname),
     phone_number(phone_number), darkest_secret(darkest_secret) {}
 
-
 std::string Contact::get_first_name() {
     return first_name;
 }

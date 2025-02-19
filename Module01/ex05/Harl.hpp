@@ -16,4 +16,10 @@ class Harl {
 		void complain( std::string level );
 };
 
+typedef	struct s_harl_map
+{
+	std::string	level;
+	void	(Harl::*func)( void );
+} t_harl_map;
+
 #endif

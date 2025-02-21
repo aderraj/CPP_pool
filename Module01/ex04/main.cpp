@@ -42,7 +42,7 @@ void	SedForLoosers(std::ifstream* in, std::ofstream* out, char **args) {
 
 int main( int ac, char **av ) {
 
-	if (ac < 4)
+	if (ac != 4)
 	{
 		std::cout << BOLD RED "Error: " RESET << "Invalid arguments\n"\
 		<< BOLD YELLOW "Usage: " RESET <<  "./SedForLoosers "\

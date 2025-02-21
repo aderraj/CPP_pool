@@ -6,7 +6,8 @@ int main()
   Zombie obj("Foo");
   obj.annonce();
   Zombie *ptr;
-  ptr = new Zombie("allocated");
+  ptr = newZombie("new one");
   ptr->annonce();
+  randomChump("chump");
   delete(ptr);
 }

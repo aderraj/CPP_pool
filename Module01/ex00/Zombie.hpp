@@ -11,10 +11,10 @@ class Zombie {
 	
 	public:
 		Zombie(std::string name);
-	void	annonce( void );
+		void	annonce( void );
 };
 
-Zombie* newZombie( std::string name );
-void randomChump( std::string name );
+Zombie*	newZombie( std::string name );
+void		randomChump( std::string name );
 
 #endif

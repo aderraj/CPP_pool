@@ -1,8 +1,8 @@
 ERASE		:=  \033[2K\r
 BLUE		:=	\033[34m
-YELLOW		:=	\033[33m
+YELLOW	:=	\033[33m
 GREEN		:=	\033[32m
-MAGENTA		:=	\033[35m
+MAGENTA	:=	\033[35m
 BOLD		:=	\033[1m
 END			:=	\033[0m
 

@@ -30,11 +30,11 @@ void	Harl::complain( std::string level ) {
 
 	int					i;
 	t_harl_map	map[4] = {
-								{"debug", &Harl::debug},
-								{"info", &Harl::info},	
-								{"warning", &Harl::warning},
-								{"error", &Harl::error}
-								};
+						{"debug", &Harl::debug},
+						{"info", &Harl::info},	
+						{"warning", &Harl::warning},
+						{"error", &Harl::error}
+						};
 
 	for (size_t i = 0 ; i < level.length(); i++)
 		level[i] = tolower(level[i]);

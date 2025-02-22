@@ -31,18 +31,22 @@ void	Harl::complain( std::string level ) {
 
 	int					i;
 	t_harl_map	map[4] = {
-								{"debug", &Harl::debug},
-								{"info", &Harl::info},	
-								{"warning", &Harl::warning},
-								{"error", &Harl::error}
-								};
+						{"debug", &Harl::debug},
+						{"info", &Harl::info},	
+						{"warning", &Harl::warning},
+						{"error", &Harl::error}
+						};
 
 	for (size_t i = 0 ; i < level.length(); i++)
 		level[i] = tolower(level[i]);
 
 	for (i = 0; i < 4; i++)
-		if (level == map[i].level)
+	{
+		if (level == map[i].level) {
 			(this->*map[i].func)();
+			break ;
+		}
+	}
 	if (i == 4)
 		std::cerr << RED "Invalid level" RESET << std::endl;
 }

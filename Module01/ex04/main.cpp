@@ -7,37 +7,27 @@
 # define BOLD "\x1b[1m"
 # define YELLOW "\x1b[33m"
 
-void SearchOccurences( std::ofstream *out, std::string* buffer, char **args ) {
+void	SedForLoosers(std::ifstream* in, std::ofstream* out, char **args) {
 
+	std::string buffer;
 	size_t pos = 0;
 	size_t last_pos = 0;
 	size_t s1_len = strlen(args[0]);
 
+	if (std::getline(*in, buffer, (char)EOF).fail() == true)
+		return (void)(std::cout << BOLD RED "Error: can't read file" RESET << std::endl);
 	while (true) {
-			pos = buffer->find(args[0], pos);
-			if (pos == std::string::npos)
-					break;
-
-			out->write(buffer->c_str() + last_pos, pos - last_pos);
-			out->write(args[1], strlen(args[1]));
-			
-			pos += s1_len;
-			last_pos = pos;
+		pos = buffer.find(args[0], pos);
+		if (pos == std::string::npos)
+				break;
+		out->write(buffer.c_str() + last_pos, pos - last_pos);
+		out->write(args[1], strlen(args[1]));
+		
+		pos += s1_len;
+		last_pos = pos;
 	}
-
-	if (last_pos < buffer->length())
-		out->write(buffer->c_str() + last_pos, buffer->length() - last_pos);
-
-}
-
-void	SedForLoosers(std::ifstream* in, std::ofstream* out, char **args) {
-
-	std::string buffer;
-
-	while (std::getline(*in, buffer).fail() == false)
-	{
-		SearchOccurences(out, &buffer, args);
-	}
+	if (last_pos < buffer.length())
+		out->write(buffer.c_str() + last_pos, buffer.length() - last_pos);
 }
 
 int main( int ac, char **av ) {

@@ -5,8 +5,6 @@
 #include <limits>
 #include <cmath>
 
-#define FIXED_EPSILON 0.00390625
-
 class Fixed {
 
 	public :
@@ -20,7 +18,7 @@ class Fixed {
 		bool					operator<(const Fixed& ref);
 		bool					operator>=(const Fixed& ref);
 		bool					operator<=(const Fixed& ref);
-		bool					operator==(const Fixed& ref);
+		bool					operator==(const Fixed& ref) const;
 		bool					operator!=(const Fixed& ref);
 		Fixed					operator+(const Fixed& ref);
 		Fixed					operator-(const Fixed& ref);

@@ -25,7 +25,7 @@ bool	Fixed::operator>=(const Fixed& ref) { return (value >= ref.getRawBits()); }
 
 bool	Fixed::operator<=(const Fixed& ref) { return (value <= ref.getRawBits()); }
 
-bool	Fixed::operator==(const Fixed& ref) { return (value == ref.getRawBits()); }
+bool	Fixed::operator==(const Fixed& ref) const { return (value == ref.getRawBits()); }
 
 bool	Fixed::operator!=(const Fixed& ref) { return (value != ref.getRawBits()); }
 

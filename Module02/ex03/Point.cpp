@@ -16,6 +16,10 @@ Point& Point::operator=(const Point& ref) {
 	return *this;
 }
 
+bool	Point::operator==(const Point& ref) const {
+	return (x == ref.getX() && y == ref.getY());
+}
+
 Fixed	Point::getX() const { return (x); }
 
 Fixed	Point::getY() const { return (y); }

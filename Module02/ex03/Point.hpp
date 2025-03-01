@@ -11,6 +11,7 @@ class	Point {
 		Point(const Point& ref);
 		Point&	operator=(const Point& ref);
 		~Point();
+		bool	operator==(const Point& ref) const;
 		Fixed	getX() const;
 		Fixed	getY() const;
 

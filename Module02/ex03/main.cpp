@@ -2,10 +2,19 @@
 #include <iostream>
 
 int main() {
+    // Define points for the triangle
+    Point a(0, 0);
+    Point b(5, 0);
+    Point c(0, 5);
 
-	Point a;
-	Point b(1.3, 2.4);
-	a = b;
-	std::cout << "a " << a.getX() << std::endl;
-	return 0;
+    // Define a point to test
+    Point point(-1, 2);
+
+    // Check if the point is inside the triangle
+    bool result = bsp(a, b, c, point);
+
+    // Output the result
+    std::cout << "Point is " << (result ? "inside" : "outside") << " the triangle." << std::endl;
+
+    return 0;
 }

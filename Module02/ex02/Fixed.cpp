@@ -4,7 +4,7 @@ Fixed::Fixed() : value(0) { }
 
 Fixed::Fixed(const int n) { value = n << fra_bits; }
 
-Fixed::Fixed(const float f) { value = roundf(f * 256); }
+Fixed::Fixed(const float f) { value = roundf(f * (1 << fra_bits)); }
 
 Fixed::Fixed(const Fixed& ref) { *this = ref; }
 
@@ -89,9 +89,9 @@ int	Fixed::getRawBits() const { return value; }
 
 void	Fixed::setRawBits(int raw) { value = raw; }
 
-float	Fixed::toFloat( void ) const { return (float)value / 256.0f; }
+float	Fixed::toFloat( void ) const { return (float)value / (1 << fra_bits); }
 
-int		Fixed::toInt( void ) const { return (value >> 8); }
+int		Fixed::toInt( void ) const { return (value >> fra_bits); }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& ref) {
 	out << ref.toFloat();

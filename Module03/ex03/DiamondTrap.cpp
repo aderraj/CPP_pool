@@ -4,7 +4,7 @@ DiamondTrap::DiamondTrap(std::string name)
 	: ClapTrap(name + "_clap_name"), Name(name) {
 	HitPoints = FragTrap::HitPoints;
 	AttackDamage = FragTrap::AttackDamage;
-	EnergyPoints = ScavTrap::EnergyPoints;
+	EnergyPoints = 50;
  }
 
 DiamondTrap::DiamondTrap(const DiamondTrap& ref)

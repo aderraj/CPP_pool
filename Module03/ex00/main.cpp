@@ -2,8 +2,8 @@
 
 int main()
 {
-  ClapTrap a("knight", 10, 10, 10);
-  ClapTrap b("bichop", 5);
+  ClapTrap a("knight");
+  ClapTrap b("bichop");
   ClapTrap c( b );
   ClapTrap d = a;
 
@@ -12,4 +12,6 @@ int main()
   b.attack("knight");
   b.beRepaired(10);
   d.attack("knight");
+  a.displayStats();
+  b.displayStats();
 }

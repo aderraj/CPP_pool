@@ -1,13 +1,20 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name, int hitPoints,
-										int energyPoints, int attackDamage)
-	: Name(name), HitPoints(hitPoints), EnergyPoints(energyPoints),
-		AttackDamage(attackDamage) {
-		std::cout << "ClapTrap constructor called." << std::endl;
+ClapTrap::ClapTrap(): Name("default_name"), HitPoints(10),
+											EnergyPoints(10), AttackDamage(0) {
+	std::cout << "ClapTrap's default constructor called." << std::endl;
 }
 
-ClapTrap::ClapTrap(const ClapTrap& ref) { *this = ref; }
+ClapTrap::ClapTrap(std::string name) : Name(name),
+					HitPoints(10), EnergyPoints(10), AttackDamage(0) {
+	std::cout << "ClapTrap's constructor called." << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap& ref) : Name(ref.Name),
+					HitPoints(ref.HitPoints), EnergyPoints(ref.EnergyPoints),
+					AttackDamage(ref.AttackDamage) {
+	std::cout << "ClapTrap's copy constructor called." << std::endl;
+}
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& ref) {
 	if (this != &ref) {

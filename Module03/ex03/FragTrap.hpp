@@ -3,10 +3,10 @@
 
 #include "ScavTrap.hpp"
 
-
 class FragTrap : virtual public ClapTrap {
 
 	public :
+		FragTrap();
 		FragTrap(std::string name);
 		FragTrap(const FragTrap& ref);
 		FragTrap&	operator=(const FragTrap& ref);

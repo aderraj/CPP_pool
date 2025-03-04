@@ -4,14 +4,17 @@ FragTrap::FragTrap() : ClapTrap() {
 	HitPoints = 100;
 	EnergyPoints = 100;
 	AttackDamage = 30;
-	std::cout << "FragTrap's default constructor called." << std::endl;
+	std::cout << BOLD BRIGHT_BLUE "FragTrap's " RESET
+						<< "default constructor called." << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	HitPoints = 100;
 	EnergyPoints = 100;
 	AttackDamage = 30;
-	std::cout << "FragTrap's constructor called." << std::endl;
+	std::cout << BOLD BRIGHT_BLUE "FragTrap's " RESET
+						<< GREEN "constructor called." RESET
+						<< std::endl;
 }
 
 FragTrap::FragTrap(const FragTrap& ref) : ClapTrap(ref) {
@@ -24,8 +27,12 @@ FragTrap&	FragTrap::operator=(const FragTrap& ref) {
 	return (*this);
 }
 
-FragTrap::~FragTrap() { std::cout << "FragTrap's destructor called." << std::endl; }
+FragTrap::~FragTrap() {
+	std::cout << BOLD BRIGHT_BLUE "FragTrap's " RESET
+						<< RED "destructor called." RESET << std::endl;
+}
 
 void	FragTrap::highFivesGuys(void) {
-	std::cout << Name << " the FragTrap requests a positive high five!" << std::endl;
+	std::cout << CYAN << Name << RESET
+						" requests a positive high five!" << std::endl;
 }

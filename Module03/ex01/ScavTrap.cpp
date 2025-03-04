@@ -34,8 +34,9 @@ ScavTrap::~ScavTrap() {
 
 void	ScavTrap::attack(const std::string& target) {
 	if (EnergyPoints > 0 && HitPoints > 0) {
-		std::cout << "ScavTrap " << Name << " attacks " << target
-							<< " , causing " << AttackDamage
+		std::cout << BOLD BRIGHT_GREEN "ScavTrap's " RESET
+							<< CYAN << Name << RESET " attacks " 
+							<< target << " , causing " << AttackDamage
 							<< " points of damage!" << std::endl;
 		EnergyPoints--;
 	}

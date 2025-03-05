@@ -47,7 +47,7 @@ class ClapTrap {
 		void	beRepaired(unsigned int amount);
 		void	displayStats( void );
 
-	protected:
+	private:
 		std::string Name;
 		unsigned int					HitPoints;
 		unsigned int					EnergyPoints;

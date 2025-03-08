@@ -12,7 +12,7 @@ int main() {
 
         Dog* dog2 = new Dog(*dog1);
         dog2->makeSound();
-        dog2->exposeIdeas();
+
         delete dog1;
         delete dog2;
     }

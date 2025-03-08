@@ -6,7 +6,7 @@ Dog::Dog() : Animal("Dog"), brain(new Brain()){
 						<< std::endl;
 }
 
-Dog::Dog(const Dog& ref) : Animal(ref), brain(new Brain(*ref.brain)) {
+Dog::Dog(const Dog& ref) : Animal(ref), brain( new Brain(*ref.brain) ) {
 	std::cout << MAGENTA "Dog's " RESET
 						<< "copy constructor called." << std::endl;
 }

@@ -10,13 +10,9 @@ Ice&	Ice::operator=(const Ice& ref) {
 	return (*this);
 }
 
-Ice::~Ice() {
-	std::cout << "Ice's destructor called." << std::endl;
-}
+Ice::~Ice() {}
 
-AMateria*	Ice::clone() const {
-	return ( new Ice() );
-}
+AMateria*	Ice::clone() const { return ( new Ice() ); }
 
 void	Ice::use(ICharacter& target) {
 	std::cout << "* shoots an ice bolt at "

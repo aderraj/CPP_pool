@@ -10,13 +10,9 @@ Cure&	Cure::operator=(const Cure& ref) {
 	return (*this);
 }
 
-Cure::~Cure() {
-	std::cout << "Cure's destructor called." << std::endl;
-}
+Cure::~Cure() {}
 
-AMateria*	Cure::clone() const {
-	return ( new Cure() );
-}
+AMateria*	Cure::clone() const { return ( new Cure() ); }
 
 void	Cure::use(ICharacter& target) {
 	std::cout << "* heals " << target.getName()

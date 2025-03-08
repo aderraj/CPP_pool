@@ -36,6 +36,5 @@ int main() {
             delete animals[i];
     }
 
-    // Check memory leaks with tools like valgrind or similar
     return 0;
 }

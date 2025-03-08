@@ -26,7 +26,6 @@ $(OBJS_DIR)/%.o: %.cpp Makefile $(INCLUDES)
 	@mkdir -p $(OBJS_DIR)
 	@$(CC) $(CPPFLAGS) -c $< -o $@
 	@printf "$(BLUE) > Compilation :$(END) $<\r"
-	@sleep 0.2
 
 clean:
 	@printf "$(MAGENTA)-->	$(OBJS_DIR) removed$(END)\n"

@@ -8,11 +8,7 @@ AMateria& AMateria::operator=(const AMateria& ref) {
 	return ((void)ref, (*this));
 }
 
-AMateria::~AMateria() {
-	std::cout << MAGENTA "AMateria's " RESET
-						<< RED "destructor called." RESET
-						<< std::endl;
-}
+AMateria::~AMateria() { }
 
 AMateria::AMateria(std::string const & type) : type(type) { }
 

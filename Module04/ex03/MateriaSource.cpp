@@ -30,20 +30,20 @@ MateriaSource&	MateriaSource::operator=(const MateriaSource& ref) {
 MateriaSource::~MateriaSource() {
 	for (int i = 0; i < 4; i++)
 		delete inventory[i];
-	std::cout << "MateriaSource's destructor called." << std::endl;
 }
 
 void	MateriaSource::learnMateria(AMateria* m) {
 	int	i;
 
 	if (!m) {
-		std::cout << "Cannot learn invalid materia!" << std::endl;
+		std::cout << "Cannot learn invalid Materia!" << std::endl;
 		return ;
 	}
 	for (i = 0; i < 4; i++) {
 		if (inventory[i] == NULL) {
 			inventory[i] = m;
-			std::cout << "Materia " << inventory[i]->getType() << " learned." << std::endl;
+			std::cout << "Materia " BLUE << inventory[i]->getType()
+								<< RESET " learned." << std::endl;
 			break;
 		}
 	}

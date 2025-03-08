@@ -37,7 +37,6 @@ Character::~Character() {
 		delete slots[i];
 		slots[i] = NULL;
 	}
-	std::cout << "Character's destructor called." << std::endl;
 }
 
 std::string const&	Character::getName() const { return (name); }
@@ -49,7 +48,7 @@ void	Character::equip(AMateria* m) {
 	int	i;
 
 	if (m == NULL) {
-		std::cout << "cannot equip invalid materia!" << std::endl;
+		std::cout << "cannot equip invalid Materia!" << std::endl;
 		return ;
 	}
 
@@ -66,27 +65,27 @@ void	Character::equip(AMateria* m) {
 void	Character::unequip(int idx) {
 
 	if (idx < 0 || idx > 3) {
-		std::cout << "cannot unequip materia at invalid idx!" << std::endl;
+		std::cout << "cannot unequip Materia at invalid idx!" << std::endl;
 		return ;
 	}
 
 	if (slots[idx] != NULL)
 		slots[idx] = NULL;
 	else
-		std::cout << "cannot unequip materia at empty slot!" << std::endl;
+		std::cout << "cannot unequip Materia at empty slot!" << std::endl;
 
 }
 
 void	Character::use(int idx, ICharacter& target) {
 
 	if (idx < 0 || idx > 3) {
-		std::cout << "cannot use materia at invalid idx!" << std::endl;
+		std::cout << "cannot use Materia at invalid idx!" << std::endl;
 		return ;
 	}
 
 	if (slots[idx] != NULL)
 		slots[idx]->use(target);
 	else
-			std::cout << "no materia to use at this idx!" << std::endl;
+			std::cout << "no Materia to use at this idx!" << std::endl;
 
 }

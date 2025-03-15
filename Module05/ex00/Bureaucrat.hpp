@@ -23,12 +23,17 @@ class Bureaucrat {
 		Bureaucrat(const Bureaucrat& other);
 		Bureaucrat& operator=(const Bureaucrat& other);
 		~Bureaucrat();
-		const std::string&	getName();
-		short				getGrade();
+		const std::string&	getName() const;
+		short					getGrade() const;
+		void								incrementGrade();
+		void								decrementGrade();
 
 	private:
 		const std::string	name;
 		short							grade;
 
 };
+
+std::ostream&	operator<<(std::ostream& out, const Bureaucrat& ref);
+
 #endif

@@ -31,7 +31,7 @@ Bureaucrat::~Bureaucrat() {
 
 const std::string&	Bureaucrat::getName() const { return (name); }
 
-short	Bureaucrat::getGrade() const { return (grade); }
+const short&	Bureaucrat::getGrade() const { return (grade); }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return RED "Grade is too" BOLD " HIGH!" RESET ;
@@ -59,4 +59,17 @@ std::ostream&	operator<<(std::ostream& out, const Bureaucrat& ref) {
 	out << ref.getName() << ", bureaucrat grade " << ref.getGrade()
 	<< std::endl;
 	return (out);
+}
+
+void	Bureaucrat::signForm(Form& form) {
+	try {
+		form.beSigned(*this);
+		std::cout << "Bureaucrat " << name
+							<< GREEN " signed form " << form.getName() 
+							<< RESET << std::endl; 
+	} catch (std::exception& e) {
+		std::cout << "Bureaucrat " << name
+							<< RED " couldn't sign form " << form.getName() 
+							<< " because the grade is too low" RESET << std::endl; 
+	}
 }

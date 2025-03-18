@@ -4,11 +4,13 @@
 #include <string>
 #include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form {
 
 	public:
 		Form();
-		Form(std::string& _name, short _signGrade, short _execGrade);
+		Form(std::string _name, short _signGrade, short _execGrade);
 		Form(const Form& other);
 		Form& operator=(const Form& other);
 		~Form();

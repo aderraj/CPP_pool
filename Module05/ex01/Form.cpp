@@ -11,7 +11,7 @@ Form::Form() :
 							 RESET << std::endl;
 }
 
-Form::Form(std::string& _name, short _signGrade, short _execGrade) :
+Form::Form(std::string _name, short _signGrade, short _execGrade) :
 				name(_name),
 				_signed(false),
 				signGrade(_signGrade),

@@ -7,6 +7,8 @@
 #include "Colors.hpp"
 #include "Form.hpp"
 
+class Form;
+
 class Bureaucrat {
 
 	public:

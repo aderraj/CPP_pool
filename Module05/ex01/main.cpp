@@ -9,9 +9,9 @@ int main() {
         Bureaucrat charlie("Charlie", 150); // Lowest grade
 
         // Create Forms
-        Form formA("FormA", 10, 20);  // Requires grade 10 to sign
-        Form formB("FormB", 50, 100); // Requires grade 50 to sign
-        Form formC("FormC", 150, 150); // Requires grade 150 to sign
+        AForm formA("FormA", 10, 20);  // Requires grade 10 to sign
+        AForm formB("FormB", 50, 100); // Requires grade 50 to sign
+        AForm formC("FormC", 150, 150); // Requires grade 150 to sign
 
         // Test signing forms
         alice.signForm(formA); // Should succeed

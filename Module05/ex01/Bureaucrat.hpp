@@ -7,7 +7,7 @@
 #include "Colors.hpp"
 #include "Form.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 
@@ -30,7 +30,7 @@ class Bureaucrat {
 		const short&				getGrade() const;
 		void								incrementGrade();
 		void								decrementGrade();
-		void								signForm(Form& form);
+		void								signForm(AForm& form);
 	private:
 		const std::string	name;
 		short							grade;

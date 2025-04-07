@@ -31,7 +31,7 @@ Bureaucrat::~Bureaucrat() {
 
 const std::string&	Bureaucrat::getName() const { return (name); }
 
-short	Bureaucrat::getGrade() const { return (grade); }
+const short&	Bureaucrat::getGrade() const { return (grade); }
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
 	return RED "Grade is too" BOLD " HIGH!" RESET ;

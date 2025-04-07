@@ -5,6 +5,9 @@
 #include <exception>
 #include <iostream>
 #include "Colors.hpp"
+#include "AForm.hpp"
+
+class AForm;
 
 class Bureaucrat {
 
@@ -27,7 +30,7 @@ class Bureaucrat {
 		const short&				getGrade() const;
 		void								incrementGrade();
 		void								decrementGrade();
-
+		void								signForm(AForm& form);
 	private:
 		const std::string	name;
 		short							grade;

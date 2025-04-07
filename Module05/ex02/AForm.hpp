@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include <string>
 #include "Bureaucrat.hpp"
@@ -7,6 +7,12 @@
 class Bureaucrat;
 
 class AForm {
+
+	private:
+		const std::string	name;
+		bool							_signed;
+		const short				signGrade;
+		const short				execGrade;
 
 	public:
 		AForm();
@@ -19,12 +25,8 @@ class AForm {
 		const short&				getSignGrade() const;
 		const short&				getExecGrade() const;
 		void								beSigned(Bureaucrat& owner);
+		virtual void				execute(const Bureaucrat& executor) = 0;
 
-	private:
-		const std::string	name;
-		bool							_signed;
-		const short				signGrade;
-		const short				execGrade;
 };
 
 std::ostream&	operator<<(std::ostream& out, AForm& form);

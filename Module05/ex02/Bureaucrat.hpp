@@ -11,6 +11,10 @@ class AForm;
 
 class Bureaucrat {
 
+	private:
+		const std::string	name;
+		short							grade;
+
 	public:
 		class GradeTooHighException : public std::exception {
 			public:
@@ -20,6 +24,7 @@ class Bureaucrat {
 			public:
 				const char*	what() const throw();
 		};
+
 		Bureaucrat();
 		Bureaucrat(std::string name, short grade)
 						throw(GradeTooHighException&, GradeTooLowException&) ;
@@ -31,9 +36,7 @@ class Bureaucrat {
 		void								incrementGrade();
 		void								decrementGrade();
 		void								signForm(AForm& form);
-	private:
-		const std::string	name;
-		short							grade;
+		void								executeForm(AForm const & form);
 
 };
 

@@ -1,4 +1,4 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <iostream>
 
 AForm::AForm() :
@@ -68,4 +68,16 @@ void	AForm::beSigned(Bureaucrat& owner) {
 	_signed = true;
 	std::cout << "Form : " << name
 						<< " signed succesfully" << std::endl;
+}
+
+void	AForm::execute(const Bureaucrat& executor) const {
+	if (!_signed)
+		throw FormNotSignedException();
+	else if (execGrade > executor.getGrade())
+		throw Bureaucrat::GradeTooLowException();
+	this->executeAction();
+}
+
+const char* AForm::FormNotSignedException::what() const throw(){
+	return (RED "Form not signed" RESET);
 }

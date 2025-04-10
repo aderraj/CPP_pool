@@ -9,8 +9,10 @@ END			:=	\033[0m
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Form28B
-SRCS = Bureaucrat.cpp AForm.cpp main.cpp
-INCLUDES = Bureaucrat.hpp AForm.hpp Colors.hpp
+SRCS = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+			 RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp
+INCLUDES = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
+			 RobotomyRequestForm.hpp PresidentialPardonForm.hpp Colors.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

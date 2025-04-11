@@ -5,32 +5,19 @@ AForm::AForm() :
 							name("default"),
 							_signed(false),
 							signGrade(150),
-							execGrade(150) {
-	std::cout << YELLOW "Form's default"
-							 "constructor called."
-							 RESET << std::endl;
-}
+							execGrade(150) {}
 
 AForm::AForm(std::string _name, short _signGrade, short _execGrade) :
 				name(_name),
 				_signed(false),
 				signGrade(_signGrade),
-				execGrade(_execGrade) {
-	std::cout << YELLOW "Form's" GREEN
-							 " constructor called."
-							 RESET << std::endl;
-}
+				execGrade(_execGrade) {}
 
 AForm::AForm(const AForm& other) :
 			name(other.name),
 			_signed(other._signed),
 			signGrade(other.signGrade),
-			execGrade(other.execGrade)
-{
-	std::cout << YELLOW "Form's" BOLD
-							" cpy constructor called."
-							 RESET << std::endl;
-}
+			execGrade(other.execGrade) {}
 
 AForm& AForm::operator=(const AForm& other) {
 	if (this != &other)
@@ -38,11 +25,7 @@ AForm& AForm::operator=(const AForm& other) {
 	return (*this);
 }
 
-AForm::~AForm() {
-		std::cout << YELLOW "Form's" RED
-							" destructor called."
-							 RESET << std::endl;
-}
+AForm::~AForm() {}
 
 const std::string&	AForm::getName() const { return (name); }
 
@@ -66,18 +49,16 @@ void	AForm::beSigned(Bureaucrat& owner) {
 		throw (Bureaucrat::GradeTooLowException());
 
 	_signed = true;
-	std::cout << "Form : " << name
-						<< " signed succesfully" << std::endl;
 }
 
 void	AForm::execute(const Bureaucrat& executor) const {
-	if (!_signed)
+ 	if (!_signed)
 		throw FormNotSignedException();
-	else if (execGrade > executor.getGrade())
+	else if (executor.getGrade() > execGrade)
 		throw Bureaucrat::GradeTooLowException();
 	this->executeAction();
 }
 
 const char* AForm::FormNotSignedException::what() const throw(){
-	return (RED "Form not signed" RESET);
+	return (RED "Form not signed!" RESET);
 }

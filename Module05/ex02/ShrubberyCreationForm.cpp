@@ -2,32 +2,38 @@
 #include <iostream>
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery", 145, 137), target(NULL) {
-	std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
-}
+ShrubberyCreationForm::ShrubberyCreationForm() :
+											AForm("Shrubbery", 145, 137),
+											target(NULL) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const std::string _target) :
-	AForm("ShrubberyCreationForm", 145, 137), target(_target) {
-	std::cout << "Shrubberry Form constructor called" << std::endl;
-}
+											AForm("Shrubbery", 145, 137),
+											target(_target) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other) :
-	AForm(other) , target(other.target) {
-	std::cout << "Shrubberry Form copy constructor called" << std::endl;
-}
+	AForm(other) , target(other.target) {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other) {
 	this->target = other.target;
-	std::cout << "Shrubberry Form operator= called " << std::endl;
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm() {
-	std::cout << "Shrubbery Form destructor called" << std::endl;
-}
+ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 void	ShrubberyCreationForm::executeAction() const {
-  std::fstream file((target + "_shrubbery").c_str());
-	file << "ascii tree\n";
+	std::ofstream file((target + "_shrubbery").c_str());
+	if (!file) {
+		std::cerr << "Error: Could not create a file" << std::endl;
+		return ;
+	}
+	file << "       _-_\n";
+	file << "    /~~   ~~\\\n";
+	file << " /~~         ~~\\\n";
+	file << "{               }\n";
+	file << " \\  _-     -_  /\n";
+	file << "   ~  \\\\ //  ~\n";
+	file << "_- -   | | _- _\n";
+	file << "  _ -  | |   -_\n";
+	file << "      // \\\\\n";
 	file.close();
 }

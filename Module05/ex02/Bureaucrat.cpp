@@ -1,8 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("default"), grade(0) {
-	std::cout << "Bureaucrat default constructor called." << std::endl;
-}
+Bureaucrat::Bureaucrat() : name("default"), grade(0) {}
 
 Bureaucrat::Bureaucrat(std::string _name, short _grade) 
 	throw(GradeTooHighException&, GradeTooLowException&) : 
@@ -10,14 +8,10 @@ Bureaucrat::Bureaucrat(std::string _name, short _grade)
 	if (_grade > 150)
 		throw GradeTooLowException();
 	else if (_grade < 1)
-		throw GradeTooHighException();
-	std::cout << "Bureaucrat constructor called." << std::endl;
-}
+		throw GradeTooHighException(); }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other) :
-						name(other.name), grade(other.grade) {
-	std::cout << "Bureaucrat copy constructor called." << std::endl;
-}
+						name(other.name), grade(other.grade) {}
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	if (this != &other)
@@ -25,9 +19,7 @@ Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other) {
 	return (*this);
 }
 
-Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called." << std::endl;
-}
+Bureaucrat::~Bureaucrat() {}
 
 const std::string&	Bureaucrat::getName() const { return (name); }
 
@@ -70,7 +62,7 @@ void	Bureaucrat::signForm(AForm& form) {
 	} catch (std::exception& e) {
 		std::cout << "Bureaucrat " << name
 							<< RED " couldn't sign form " << form.getName() 
-							<< " because the grade is too low" RESET << std::endl; 
+							<< ": grade is too" BOLD " low!" RESET << std::endl; 
 	}
 }
 
@@ -80,7 +72,7 @@ void	Bureaucrat::executeForm(AForm const & form) {
 		form.execute(*this);
 		std::cout << name << " executed " << form.getName() << std::endl;
 	} catch (std::exception& e) {
-		std::cout << "Bureaucrat couldn't execute Form : "
+		std::cout << name << " couldn't execute Form : "
 							<< e.what() << std::endl;
 	}
 }

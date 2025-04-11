@@ -1,16 +1,10 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidental", 25, 5) , target(NULL) {
-	std::cout << "PresidentalPardon default constructor called" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidental", 25, 5) , target(NULL) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string _target) : AForm("Presidental", 25, 5), target(_target) {
-	std::cout << "PresidentalPardon constructor called" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(const std::string _target) : AForm("Presidental", 25, 5), target(_target) {}
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), target(other.target) {
-	std::cout << "Presidental copy constructor called" << std::endl;
-}
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : AForm(other), target(other.target) {}
 
 PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm& other) {
 	this->target = other.target;

@@ -13,4 +13,9 @@ class Intern {
 		AForm*	makeForm(std::string name, std::string _target);
 };
 
+typedef struct s_indexedForm{
+  std::string name;
+  AForm*	(*f)(const std::string&);
+} t_indexedForm;
+
 #endif

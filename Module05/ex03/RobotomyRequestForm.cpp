@@ -16,7 +16,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 RobotomyRequestForm::~RobotomyRequestForm() {}
 
 void	RobotomyRequestForm::executeAction() const {
-	std::cout << "Bzzt..rrrrt...dsss..zzz" << std::endl;
+	std::cout << "* WHIRRRR... VRRT-VRRT... BZZZZZ!!! *" << std::endl;
 	std::srand(std::time(0));
 	if (rand() % 2)
 		std::cout << target << " has been robotomized successfully" << std::endl;

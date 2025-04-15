@@ -4,7 +4,6 @@
 #include <string>
 #include <exception>
 #include <iostream>
-#include "Colors.hpp"
 #include "AForm.hpp"
 
 class AForm;

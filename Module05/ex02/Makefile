@@ -12,7 +12,7 @@ NAME = Form28B
 SRCS = Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
 			 RobotomyRequestForm.cpp PresidentialPardonForm.cpp main.cpp
 INCLUDES = Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp \
-			 RobotomyRequestForm.hpp PresidentialPardonForm.hpp Colors.hpp
+			 RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

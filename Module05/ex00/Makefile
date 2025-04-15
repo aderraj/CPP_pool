@@ -10,7 +10,7 @@ CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Bureaucrat
 SRCS = Bureaucrat.cpp main.cpp
-INCLUDES = Bureaucrat.hpp Colors.hpp
+INCLUDES = Bureaucrat.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

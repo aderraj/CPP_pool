@@ -10,7 +10,7 @@ CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Form
 SRCS = Bureaucrat.cpp Form.cpp main.cpp
-INCLUDES = Bureaucrat.hpp Form.hpp Colors.hpp
+INCLUDES = Bureaucrat.hpp Form.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

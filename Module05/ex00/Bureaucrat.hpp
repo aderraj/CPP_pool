@@ -4,7 +4,13 @@
 #include <string>
 #include <exception>
 #include <iostream>
-#include "Colors.hpp"
+
+# define RED "\x1b[91m"
+# define GREEN "\x1b[32m"
+# define YELLOW "\x1b[93m"
+# define CYAN "\x1b[36m"
+# define RESET "\x1b[0m"
+# define BOLD "\x1b[1m"
 
 class Bureaucrat {
 

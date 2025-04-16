@@ -32,11 +32,11 @@ Scalartype detectType(const std::string& literal) {
   return UNKNOWN;
 }
 
-void  ScalarConverter::convertToChar(double& value) {
+void  ScalarConverter::convertToChar(const double& value) {
   std::cout << "char: ";
   if (std::isnan(value) || std::isinf(value)
-    || value < std::numeric_limits<char>::min()
-    || value > std::numeric_limits<char>::max())
+      || value < std::numeric_limits<char>::min()
+      || value > std::numeric_limits<char>::max())
     std::cout << "impossible";
   else if (!isprint(static_cast<char>(value)))
     std::cout << "Non displayable";
@@ -45,18 +45,44 @@ void  ScalarConverter::convertToChar(double& value) {
   std::cout << std::endl;
 }
 
-void  ScalarConverter::convertToInt(double& value) {
-
+void  ScalarConverter::convertToInt(const double& value) {
+  std::cout << "int: ";
+  if (std::isnan(value) || std::isinf(value)
+      || value < std::numeric_limits<int>::min()
+      || value > std::numeric_limits<int>::max())
+    std::cout << "impossible";
+  else
+    std::cout << static_cast<int>(value);
+  std::cout << std::endl;
 }
 
-void  ScalarConverter::convertToFloat(double& value) {
-
+void  ScalarConverter::convertToFloat(const double& value) {
+  std::cout << "float: ";
+  if (value < std::numeric_limits<float>::min()
+      || value > std::numeric_limits<float>::max())
+    std::cout << "impossible";
+  else
+    std::cout << static_cast<float>(value);
+  std::cout << std::endl;
 }
 
-void  ScalarConverter::convertToDouble(double& value) {
-
+void  ScalarConverter::convertToDouble(const double& value) {
+  std::cout << "double: ";
+  if (value < std::numeric_limits<double>::min()
+      || value > std::numeric_limits<double>::max())
+    std::cout << "impossible";
+  else
+    std::cout << value;
+  std::cout << std::endl;
 }
 
 void  ScalarConverter::convert(const std::string& src) {
-
+  
+  if (detectType(src) != UNKNOWN) {
+    char  *end;
+    double value = static_cast<double>(strtod(src.c_str(), &end));
+    if (end != src.)
+    convertToChar();
+  } 
 }
+

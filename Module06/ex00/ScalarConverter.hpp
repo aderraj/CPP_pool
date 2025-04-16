@@ -19,10 +19,10 @@ typedef enum Scalartypes {
 class ScalarConverter {
 
   private:
-    static void  convertToChar(double& value);
-    static void  convertToInt(double& value);
-    static void  convertToFloat(double& value);
-    static void  convertToDouble(double& value);
+    static void  convertToChar(const double& value);
+    static void  convertToInt(const double& value);
+    static void  convertToFloat(const double& value);
+    static void  convertToDouble(const double& value);
 
   public:
     static void convert(const std::string& src);

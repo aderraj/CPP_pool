@@ -8,9 +8,9 @@ END			:=	\033[0m
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = Bureaucrat
-SRCS = Bureaucrat.cpp main.cpp
-INCLUDES = Bureaucrat.hpp
+NAME = ScalarConverter
+SRCS = ScalarConverter.cpp main.cpp
+INCLUDES = ScalarConverter.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

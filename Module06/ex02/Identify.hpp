@@ -1,4 +1,3 @@
-#pragma once
 #ifndef IDENTIFY_HPP
 #define IDENTIFY_HPP
 

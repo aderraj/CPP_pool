@@ -29,7 +29,7 @@ AForm*	 Intern::makeForm(std::string name, std::string _target) {
     {"shrubbery creation", &makeShrubberyForm},
   };
 
-  for (int i = 0; i < name.length(); i++)
+  for (size_t i = 0; i < name.length(); i++)
     name[i] = tolower(name[i]);
 
   for (int i = 0; i < 3; i++) {

@@ -4,7 +4,7 @@
 class Data {
 
   private:
-    char c;
+    int x;
 
   public:
     Data();

@@ -17,11 +17,11 @@ void identify(Base* p) {
 
 void identify(Base& p) {
   std::cout << "it's type: ";
-  try { dynamic_cast<A&>(p); std::cout << "A";}
+  try { (void)dynamic_cast<A&>(p); std::cout << "A";}
   catch (...) {
-    try { dynamic_cast<B&>(p); std::cout << "B";}
+    try { (void)dynamic_cast<B&>(p); std::cout << "B";}
     catch (...) {
-      try { dynamic_cast<C&>(p); std::cout << "C";}
+      try { (void)dynamic_cast<C&>(p); std::cout << "C";}
       catch (...) { std::cout << "Base"; }
     }
   }

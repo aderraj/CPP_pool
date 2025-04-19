@@ -7,7 +7,7 @@ BOLD		:=	\033[1m
 END			:=	\033[0m
 
 CC = c++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Identify
 SRCS = Identify.cpp main.cpp
 INCLUDES = Identify.hpp

@@ -76,7 +76,11 @@ bool isValidLiteral(const std::string& literal) {
 }
 
 void  ScalarConverter::convert(const std::string& src) {
-  double value = strtod(src.c_str(), NULL);
+  double value;
+  if (src.length() == 1 && !isdigit(src[0]))
+    value = static_cast<double>(src[0]);
+  else 
+    value = strtod(src.c_str(), NULL);
   ScalarConverter::convertToChar(value);
   ScalarConverter::convertToInt(value);
   ScalarConverter::convertToFloat(value);

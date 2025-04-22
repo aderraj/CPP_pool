@@ -8,9 +8,9 @@ END			:=	\033[0m
 
 CC = c++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = whatever
+NAME = iter
 SRCS = main.cpp
-INCLUDES = whatever.hpp
+INCLUDES = iter.hpp
 OBJS_DIR = objs
 OBJS = $(addprefix $(OBJS_DIR)/, $(SRCS:.cpp=.o))
 

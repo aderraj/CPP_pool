@@ -37,7 +37,7 @@ int main() {
         Span sp3(10);
         std::vector<int> numbers;
         for (int i = 1; i <= 10; ++i)
-            numbers.push_back(i * 10); // 10, 20, ..., 100
+            numbers.push_back(i * 10);
 
         sp3.addNumbers(numbers.begin(), numbers.end());
 

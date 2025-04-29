@@ -25,3 +25,33 @@ int main()
   std::stack<int> s(mstack);
   return 0;
 }
+
+// #include <vector>
+
+// int main()
+// {
+//   std::vector<int> mstack;
+//   mstack.push_back(5);
+//   mstack.push_back(17);
+//   std::cout << mstack.back() << std::endl; // Equivalent to top()
+//   mstack.pop_back(); // Equivalent to pop()
+//   std::cout << mstack.size() << std::endl;
+//   mstack.push_back(3);
+//   mstack.push_back(5);
+//   mstack.push_back(737);
+//   //[...]
+//   mstack.push_back(0);
+
+//   std::vector<int>::iterator it = mstack.begin();
+//   std::vector<int>::iterator ite = mstack.end();
+//   ++it;
+//   --it;
+//   while (it != ite)
+//   {
+//     std::cout << *it << std::endl;
+//     ++it;
+//   }
+
+//   std::vector<int> s(mstack); // Copy the vector
+//   return 0;
+// }

@@ -2,7 +2,7 @@
 
 int main (int ac, char **av) {
   if (ac != 2)
-    return (std::cerr << "Invalid args!" << std::endl, 0);
+    return (printErr("invalid args"), 0);
 
-  bitcoin data;
+  bitcoin data(av[1]);
 }

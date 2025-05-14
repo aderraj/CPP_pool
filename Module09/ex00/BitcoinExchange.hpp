@@ -2,28 +2,15 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <algorithm>
 #include <map>
 #include <string>
-#include <fstream>
-#include <sstream>
+#include <ctime>
 
-class bitcoin {
 
-    private:
-      std::multimap<std::string, float> data;
-      std::multimap<std::string, float> output;
-      bool  parseLine(const std::string& line);
-      bool  parseInput(const std::string& line);
-      bitcoin();
+void  printErr(const char* info, const char* extra = NULL);
+void  btcExg(const char* filename);
 
-    public:
-      bitcoin(const char* name);
-      bitcoin(const bitcoin& other);
-      bitcoin& operator=(const bitcoin& other);
-      ~bitcoin();
-
-};
-
-void  printErr(const char* info);
 #endif

@@ -1,71 +1,56 @@
 #include "BitcoinExchange.hpp"
 
-void  printErr(const char* info) {
-  std::cerr << "Error: " << info << "!" << std::endl;
+void  printErr(const char* info, const char* extra) {
+  std::cout << "Error: " << info
+            << (extra ? extra : "!") << std::endl;
 }
 
-bool  bitcoin::parseLine(const std::string& line) {
-  std::istringstream s(line);
-  std::string date, rate;
+bool checkDate(std::string& date) {
+  std::tm tm = {};
+  if (!strptime(date.c_str(), "%Y-%m-%d", &tm))
+    return false;
+  std::time_t input_time = mktime(&tm);
+  if (input_time == -1)
+    return false;
 
-  if (std::getline(s, date, ',') && std::getline(s, rate, ',')) {
-    data.insert(std::make_pair(date, std::atof(rate.c_str())));
-    return true;
-  }
-  return (false);
-}
+  std::tm* validated = localtime(&input_time);
 
-#include <regex.h>
-bool  validateInput(const std::string& input, const char* pattern) {
-  regex_t regex;
+  if (validated->tm_year != tm.tm_year
+    || validated->tm_mon != tm.tm_mon
+    || validated->tm_mday != tm.tm_mday)
+    return false;
 
-  int result = regcomp(&regex, pattern, REG_EXTENDED);
-  if (result != 0)
-    return (printErr("failed to compile regex pattern"), false);
-  result = regexec(&regex, input.c_str(), 0, NULL, 0);
-  regfree(&regex);
-
-  return (result == 0);
-}
-
-bool  bitcoin::parseInput(const std::string& line) {
-  std::istringstream str(line);
-  std::string date, value;
-
-  if (std::getline(str, date, '|') && std::getline(str, value, '|')) {
-    date = date.substr(0, date.length() - 1);
-    value = value.substr(1, value.length() - 1);
-    std::cout << date << "$" << value << std::endl;
-    if (!validateInput(date, "^\\d{4}-\\d{2}-\\d{2}\\s")
-      || !validateInput(value, "^\\s(1000|[0-9]{1,3}(\\.[0-9]+)?)$"))
-      return (std::cout << line << std::endl, printErr("invalid syntax inside input file"), false);
-    else
-      output.insert(std::make_pair(date, std::atof(value.c_str())));
-  }
-  else
-    return (printErr("invalid syntax inside input file"), false);
+  if (input_time > std::time(NULL))
+    return false;
 
   return true;
 }
 
-bitcoin::bitcoin(const char* name) {
-
+void  readDataBase(std::map<std::string, double>& data) {
   std::ifstream db("data.csv");
-  if (db.fail()) { printErr("cannot open database file"); return; }
-  bool flag = true;
-  for (std::string line ; std::getline(db, line); ) {
-      if (flag) { flag = false; continue; }
-      if (!parseLine(line)) { printErr("invalid syntax in databasefile"); return; }
+  std::string date, rate;
+
+  if (!db.is_open())
+      throw std::runtime_error("can't open database file !");
+  std::getline(db, );
+  while (std::getline(db, date, ',') && std::getline(db, rate, ',')) {
+    if (date.empty() || rate.empty())
+      throw std::runtime_error("invalid syntax inside data file!");
+    else if (!checkDate(date))
+      throw std::runtime_error("bad date => " + date);
+    data.insert(std::make_pair(date, std::strtod(rate.c_str(), NULL)));
   }
-
-  std::ifstream input(name);
-  if (input.fail()) { printErr("cannot open input file"); return; }
-  for (std::string line ; std::getline(input, line); )
-    if (!parseInput(line))
-      return ;
-
-  for (std::multimap<std::string, float>::iterator it = output.begin(); it != output.end(); it++)
-    std::cout << it->first << " # " << it->second << std::endl;
 }
 
-bitcoin::~bitcoin() {}
+void  btcExg(const char* filename) {
+
+  (void)filename;
+  std::map<std::string, double> data;
+
+  try { readDataBase(data); }
+  catch (std::exception &e) { std::cout << e.what() << std::endl; return ; }
+
+  for (std::map<std::string, double>::iterator it = data.begin();
+    it != data.end(); it++)
+      std::cout << it->first << "," << it->second << std::endl;
+}

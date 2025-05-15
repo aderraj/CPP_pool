@@ -8,9 +8,10 @@
 #include <map>
 #include <string>
 #include <ctime>
+#include <cstring>
 
 
-void  printErr(const char* info, const char* extra = NULL);
+void  printErr(const std::string& info);
 void  btcExg(const char* filename);
 
 #endif

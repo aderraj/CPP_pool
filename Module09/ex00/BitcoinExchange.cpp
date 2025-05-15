@@ -1,7 +1,7 @@
 #include "BitcoinExchange.hpp"
 
 void  printErr(const std::string& info) {
-  std::cout << "Error: " << info << std::endl;
+  std::cerr << "Error: " << info << std::endl;
 }
 
 bool checkHeader(std::ifstream &file, const std::string& corr) {
@@ -80,7 +80,9 @@ void  readInput(const std::string& line, std::map<std::string, double>& data) {
   std::string date, value;
   double val;
 
-  if (std::getline(str, date, '|') && std::getline(str, value, '|')) {
+  // don't forget to fix the error msg here
+  if (!std::getline(str, date, '|')) {printErr("bad input => " + date); return ;}
+  if (!std::getline(str, value, '|')) { printErr("bad input => " + date); return; }
     date = date.substr(date.find_first_not_of(" \t\r\b"), date.length());
     date = date.erase(date.find_last_not_of(" \t\r\b") + 1);
     if (!checkDate(date))
@@ -97,7 +99,7 @@ void  readInput(const std::string& line, std::map<std::string, double>& data) {
       }
       std::cout << date << " => " << val << " = " << val * it->second << std::endl;
     }
-  }
+
 }
 
 void  btcExg(const char* filename) {

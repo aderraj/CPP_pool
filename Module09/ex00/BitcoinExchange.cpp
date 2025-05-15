@@ -66,15 +66,14 @@ void  readDataBase(std::map<std::string, double>& data) {
     throw std::runtime_error("invalid header inside data file !");
   while (std::getline(db, line)) {
     std::stringstream stream(line);
-    if (!std::getline(db, date, ',') || !std::getline(db, rate, ',')
+    if (!std::getline(stream, date, ',') || !std::getline(stream, rate, ',')
     || date.empty() || rate.empty())
       throw std::runtime_error("invalid syntax inside data file!");  
     if (!checkDate(date))
       throw std::runtime_error("bad date => " + date);
-    data.insert(std::make_pair(date, std::strtod(rate.c_str(), NULL)));
+    data.insert(std::pair<std::string, double>(date, std::strtod(rate.c_str(), NULL)));
   }
 }
-
 
 void  readInput(const std::string& line, std::map<std::string, double>& data) {
   std::stringstream str(line);
@@ -89,10 +88,14 @@ void  readInput(const std::string& line, std::map<std::string, double>& data) {
     else if (!checkValue(value, val))
       printErr("invalid value => " + value);
     else {
-      std::cout << "[" + date + "]" << std::endl;
-      std::map<std::string, double>::iterator it = data.find(date);
-      if (it != data.end())
-        std::cout << it->first << " => " << it->second << " = " << val * it->second << std::endl;
+      std::map<std::string, double>::iterator it;
+      it = data.find(date);
+      if (it == data.end()) {
+        it = data.lower_bound(date);
+        if (it != data.begin())
+          it--;
+      }
+      std::cout << date << " => " << val << " = " << val * it->second << std::endl;
     }
   }
 }
@@ -104,6 +107,8 @@ void  btcExg(const char* filename) {
   try { readDataBase(data); }
   catch (std::exception &e) { std::cout << e.what() << std::endl; return ; }
 
+  // for (std::map<std::string, double>::iterator it = data.begin(); it != data.end(); it++)
+  //   std::cout << it->first << " ; " << it->second << std::endl;
   std::ifstream input(filename);
   if (input.fail())
     throw std::runtime_error("can't open input file !");

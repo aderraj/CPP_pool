@@ -80,26 +80,24 @@ void  readInput(const std::string& line, std::map<std::string, double>& data) {
   std::string date, value;
   double val;
 
-  // don't forget to fix the error msg here
-  if (!std::getline(str, date, '|')) {printErr("bad input => " + date); return ;}
-  if (!std::getline(str, value, '|')) { printErr("bad input => " + date); return; }
-    date = date.substr(date.find_first_not_of(" \t\r\b"), date.length());
-    date = date.erase(date.find_last_not_of(" \t\r\b") + 1);
-    if (!checkDate(date))
-      printErr("bad input => " + date);
-    else if (!checkValue(value, val))
-      printErr("invalid value => " + value);
-    else {
-      std::map<std::string, double>::iterator it;
-      it = data.find(date);
-      if (it == data.end()) {
-        it = data.lower_bound(date);
-        if (it != data.begin())
-          it--;
-      }
-      std::cout << date << " => " << val << " = " << val * it->second << std::endl;
+  if (!std::getline(str, date, '|') || !std::getline(str, value, '|')){
+    printErr("bad input => " + line); return ;}
+  date = date.substr(date.find_first_not_of(" \t\r\b"), date.length());
+  date = date.erase(date.find_last_not_of(" \t\r\b") + 1);
+  if (!checkDate(date))
+    printErr("bad input => " + date);
+  else if (!checkValue(value, val))
+    printErr("invalid value => " + value);
+  else {
+    std::map<std::string, double>::iterator it;
+    it = data.find(date);
+    if (it == data.end()) {
+      it = data.lower_bound(date);
+      if (it != data.begin())
+        it--;
     }
-
+    std::cout << date << " => " << val << " = " << val * it->second << std::endl;
+  }
 }
 
 void  btcExg(const char* filename) {
@@ -109,8 +107,6 @@ void  btcExg(const char* filename) {
   try { readDataBase(data); }
   catch (std::exception &e) { std::cout << e.what() << std::endl; return ; }
 
-  // for (std::map<std::string, double>::iterator it = data.begin(); it != data.end(); it++)
-  //   std::cout << it->first << " ; " << it->second << std::endl;
   std::ifstream input(filename);
   if (input.fail())
     throw std::runtime_error("can't open input file !");

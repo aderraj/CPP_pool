@@ -62,6 +62,8 @@ void  readDataBase(std::map<std::string, double>& data) {
 
   if (!db.is_open())
       throw std::runtime_error("can't open database file !");
+  if (db.peek() == std::ifstream::traits_type::eof())
+      throw std::runtime_error("database file is empty!");
   if (!checkHeader(db, "date,exchange_rate"))
     throw std::runtime_error("invalid header inside data file !");
   while (std::getline(db, line)) {
@@ -108,14 +110,16 @@ void  btcExg(const char* filename) {
   catch (std::exception &e) { std::cout << e.what() << std::endl; return ; }
 
   std::ifstream input(filename);
-  if (input.fail())
-    throw std::runtime_error("can't open input file !");
+  if (!input.is_open())
+    { printErr("cannot open input file"); return ; }
+
+  if (input.peek() == std::ifstream::traits_type::eof())
+    { printErr("input file is empty"); return ; }
 
   std::string line;
   if (!checkHeader(input, "date | value"))
     printErr("invalid header inside input file");
 
-  while (std::getline(input, line)) {
+  while (std::getline(input, line))
     readInput(line, data);
-  }  
 }

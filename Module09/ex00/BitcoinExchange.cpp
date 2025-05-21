@@ -120,6 +120,8 @@ void  btcExg(const char* filename) {
   if (!checkHeader(input, "date | value"))
     printErr("invalid header inside input file");
 
-  while (std::getline(input, line))
-    readInput(line, data);
+  while (std::getline(input, line)) {
+    if (!line.empty() && line.find_first_not_of(" \t\r\b\n") != std::string::npos)
+      readInput(line, data);
+  }
 }

@@ -5,4 +5,6 @@
 #include <vector>
 #include <algorithm>
 
+std::vector<int>  mergeInsertSort(const std::vector<int>& nums);
+
 #endif

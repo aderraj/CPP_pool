@@ -18,7 +18,7 @@ long  calculate(int x, int y, char op) {
     return (x * y);
   case '/':
     if (!y)
-      throw std::runtime_error("undefined division by 0");
+      throw std::logic_error("invalid division by 0!");
     return (x / y);
   default:
     throw std::runtime_error("invalid operator!");

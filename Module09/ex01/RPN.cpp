@@ -44,7 +44,8 @@ void  rpn(const char* exp) {
       numbers.pop();
       numbers.push(result);
     }
-    else if (f.find_first_not_of("0123456789") == std::string::npos)
+    else if ((f[0] == '-' && f.size() > 1 && f.find_first_not_of("0123456789", 1) == std::string::npos)
+      || f.find_first_not_of("0123456789") == std::string::npos)
       numbers.push(atoi(f.c_str()));
     else
       throw std::runtime_error("Error: invalid syntax!");

@@ -10,7 +10,7 @@ int main (int ac, char **av) {
     return (std::cerr << e.what() << std::endl, 0);
   }
   
-  if (isSorted(nums))
+  if (isSorted(nums)) 
     return (std::cerr << "Error: already sorted!\n", 0);
   std::cout << "Before: ";
   printSequence< std::vector<int> >(nums);

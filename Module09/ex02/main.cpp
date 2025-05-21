@@ -4,10 +4,14 @@ int main (int ac, char **av) {
   if (ac < 2)
     return (std::cerr << "Error: insufficient args!\n", 0);
 
-  std::vector<int> nums = getSequence<std::vector<int> >(ac, av);
+  std::vector<int> nums;
+  try { nums = getSequence<std::vector<int> >(ac, av); }
+  catch (std::exception& e) {
+    return (std::cerr << e.what() << std::endl, 0);
+  }
+  
   if (isSorted(nums))
     return (std::cerr << "Error: already sorted!\n", 0);
-
   std::cout << "Before: ";
   printSequence< std::vector<int> >(nums);
 
